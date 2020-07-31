@@ -26,4 +26,17 @@ class PickUtils {
         }
         return valid
     }
+
+    fun getTeamLevelRate(level : String) : Int{
+        var rate = 0
+        when (level) {
+            "Z" -> rate = 5
+            "S" -> rate = 5
+            "A" -> rate = 4
+            "B" -> rate = 3
+            "C" -> rate = 2
+            "D" -> rate = 1
+        }
+        return rate
+    }
 }
