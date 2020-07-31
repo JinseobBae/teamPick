@@ -2,12 +2,14 @@ package com.example.teampick.pick.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
 import android.text.Spannable
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.marginTop
 import com.example.teampick.R
 import java.util.*
 
@@ -48,6 +50,7 @@ class SetUserActivity : AppCompatActivity() {
                 editText.left = 100
                 editText.textSize = 18f
                 editText.hint = "이름을 입력해주세요."
+                editText.setBackgroundResource(R.drawable.custom_edittext)
                 layout.addView(editText)
             }
             val submit = findViewById<View>(R.id.userSubmit) as Button

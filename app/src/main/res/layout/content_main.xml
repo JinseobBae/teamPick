@@ -7,31 +7,31 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-
-
     <EditText
         android:id="@+id/numofpeople"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:hint="인원수를 입력해주세요."
-        android:textStyle="bold"
+        android:layout_height="50dp"
+        android:layout_marginTop="152dp"
+        android:background="@drawable/custom_edittext"
+        android:hint="인원 수를 입력하세요."
         android:inputType="number"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/roundNum"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:hint="라운드 횟수를 입력해주세요."
-        android:textStyle="bold"
+        android:layout_height="50dp"
+        android:layout_marginTop="224dp"
+        android:background="@drawable/custom_edittext"
+        android:hint="라운드 횟수를 입력하세요."
         android:inputType="number"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,7 +39,7 @@
         android:id="@+id/setUser"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="356dp"
         android:background="@drawable/button_style"
         android:text="플레이어 입력"
         android:textStyle="bold"
@@ -52,7 +52,7 @@
         android:id="@+id/pickTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="488dp"
         android:background="@drawable/button_style"
         android:drawableStart="@drawable/random_card"
         android:drawablePadding="15dp"
@@ -60,7 +60,7 @@
         android:text="팀 뽑기"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.500"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
