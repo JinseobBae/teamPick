@@ -47,13 +47,13 @@ class PickResultActivity : AppCompatActivity() {
             for (seq in ratingList) {
                 val key = ratingMap[seq]
                 val teamValues: List<String>? = teamPickResult[key]
-                if (teamValues != null && teamValues.size > 0) {
+                if (teamValues != null && teamValues.isNotEmpty()) {
                     makeTextArea(key, teamValues, teamVo, seq)
                 }
             }
-            val fb = findViewById<View>(R.id.fab) as FloatingActionButton
-            val fbListener = fbListener(teamPickResult, userList, roundCnt)
-            fb.setOnClickListener(fbListener)
+//            val fb = findViewById<View>(R.id.fab) as FloatingActionButton
+////            val fbListener = fbListener(teamPickResult, userList, roundCnt)
+////            fb.setOnClickListener(fbListener)
         }
     }
 
@@ -134,7 +134,7 @@ class PickResultActivity : AppCompatActivity() {
             }
         }
         if (rating > 0) {
-            rating = rating / userTeam.size
+            rating /= userTeam.size
         }
         return Math.round(rating * 100000) / 100000.0
     }

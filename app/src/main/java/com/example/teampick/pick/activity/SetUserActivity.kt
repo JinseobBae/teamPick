@@ -2,19 +2,17 @@ package com.example.teampick.pick.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
 import android.text.Spannable
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.marginTop
 import com.example.teampick.R
-import java.util.*
 
 class SetUserActivity : AppCompatActivity() {
-    var numOfUserGlobal = 0
+    private var numOfUserGlobal = 0
+    private var roundNum = 0
     var idList: MutableList<Int> = ArrayList()
 
     @SuppressLint("SetTextI18n")
@@ -23,11 +21,19 @@ class SetUserActivity : AppCompatActivity() {
         val onClickListener = initBtn()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_set)
-        val intent = intent
         var numOfUser = 0
+        var userList: ArrayList<String>? = ArrayList()
+        var userSetChanged = false
         if (intent != null) {
             numOfUser = intent.getIntExtra("numOfPeople", 0)
+            roundNum = intent.getIntExtra("roundCount", 0)
+            userList = intent.getSerializableExtra("userList") as java.util.ArrayList<String>?
         }
+
+        if(userList == null || userList.size != numOfUser){
+            userSetChanged = true
+        }
+
         if (numOfUser > 0) {
             numOfUserGlobal = numOfUser
             val layout = findViewById<View>(R.id.userNameArea) as LinearLayout
@@ -49,7 +55,11 @@ class SetUserActivity : AppCompatActivity() {
                 editText.layoutParams = layoutParams
                 editText.left = 100
                 editText.textSize = 18f
-                editText.hint = "이름을 입력해주세요."
+                if(userSetChanged){
+                    editText.hint = " 이름을 입력해주세요."
+                }else{
+                    editText.setText(userList?.get(i))
+                }
                 editText.setBackgroundResource(R.drawable.custom_edittext)
                 layout.addView(editText)
             }
@@ -76,6 +86,9 @@ class SetUserActivity : AppCompatActivity() {
                     if (userList.size == numOfUserGlobal) {
                         intent.putExtra("userList", userList)
                         intent.putExtra("numOfUser", numOfUserGlobal)
+                        if(roundNum > 0){
+                            intent.putExtra("roundCount", roundNum)
+                        }
                         startActivity(intent)
                     } else {
                         Toast.makeText(applicationContext, "모든 사용자를 입력해주세요,", Toast.LENGTH_SHORT).show()

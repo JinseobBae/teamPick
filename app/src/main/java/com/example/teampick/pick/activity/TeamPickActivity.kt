@@ -17,11 +17,20 @@ class TeamPickActivity : AppCompatActivity() {
         setContentView(R.layout.team_pick)
         val receiveIntent = intent
         var userList: ArrayList<String?>? = ArrayList()
-        if (receiveIntent != null && receiveIntent.hasExtra("numOfUser")) {
-            val numUser = findViewById<View>(R.id.numofpeople) as EditText
-            numUser.setText(receiveIntent.getIntExtra("numOfUser", 0).toString())
-            userList = receiveIntent.getSerializableExtra("userList") as ArrayList<String?>?
+
+        if(receiveIntent != null){
+            if (receiveIntent.hasExtra("numOfUser")) {
+                val numUser = findViewById<View>(R.id.numofpeople) as EditText
+                numUser.setText(receiveIntent.getIntExtra("numOfUser", 0).toString())
+                userList = receiveIntent.getSerializableExtra("userList") as ArrayList<String?>?
+            }
+
+            if (receiveIntent.hasExtra("roundCount")){
+                val roundCount = findViewById<View>(R.id.roundNum) as EditText
+                roundCount.setText(receiveIntent.getIntExtra("roundCount", 0).toString())
+            }
         }
+
         val onClick = initBtn(userList)
         val pickTeamBtn = findViewById<View>(R.id.pickTeam) as Button
         pickTeamBtn.setOnClickListener(onClick)
@@ -53,15 +62,16 @@ class TeamPickActivity : AppCompatActivity() {
                         numOf = numberOfPeople.text.toString().toInt()
                     } catch (e: NumberFormatException) {
                         e.printStackTrace()
-                        Toast.makeText(this@TeamPickActivity, "숫자를 입력하세요", Toast.LENGTH_LONG).show()
-                    }
-                    if (numOf > 6) {
-                        Toast.makeText(this@TeamPickActivity, "지금은 디자인때문에 6명까지만 가능", Toast.LENGTH_LONG).show()
-                        return@OnClickListener
+                        Toast.makeText(this@TeamPickActivity, "인원수를 입력하세요.", Toast.LENGTH_LONG).show()
                     }
                     if (numOf > 0) {
                         val intent = Intent(applicationContext, SetUserActivity::class.java)
+                        var round : String? = roundCount.text?.toString()
+                        if(round != null && round != ""){
+                            intent.putExtra("roundCount", roundCount.text.toString().toInt())
+                        }
                         intent.putExtra("numOfPeople", numOf)
+                        intent.putExtra("userList", userList)
                         startActivity(intent)
                     }
                 }
