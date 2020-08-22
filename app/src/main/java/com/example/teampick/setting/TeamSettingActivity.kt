@@ -9,8 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.teampick.R
-import com.example.teampick.custom.TeamAddDialog
-import com.example.teampick.database.AppDataBase
+import com.example.teampick.custom.dialog.TeamAddDialog
 import com.example.teampick.database.DBService
 
 
@@ -23,15 +22,10 @@ class TeamSettingActivity : AppCompatActivity() {
         setContentView(R.layout.team_setting)
 
         val onClick = initBtn()
-
-        var teamListBtn = findViewById<Button>(R.id.teamList)
-        teamListBtn.setOnClickListener(onClick)
-
-        var clearBtn = findViewById<Button>(R.id.clearTeam)
-        clearBtn.setOnClickListener(onClick)
-
-        var addBtn = findViewById<Button>(R.id.addTeam)
-        addBtn.setOnClickListener(onClick)
+        findViewById<Button>(R.id.teamList).setOnClickListener(onClick)
+        findViewById<Button>(R.id.clearTeam).setOnClickListener(onClick)
+        findViewById<Button>(R.id.addTeam).setOnClickListener(onClick)
+        findViewById<Button>(R.id.delTeam).setOnClickListener(onClick)
     }
 
 
@@ -41,6 +35,12 @@ class TeamSettingActivity : AppCompatActivity() {
                     R.id.addTeam -> {
                         var addDialog = TeamAddDialog(this)
                         addDialog.show()
+                    }
+
+                    R.id.delTeam -> {
+                        val toIntent = Intent(applicationContext, TeamRemoveActivity::class.java)
+                        toIntent.putExtra("isDel", true)
+                        startActivity(toIntent)
                     }
 
                     R.id.teamList -> {
