@@ -18,4 +18,12 @@ class DBService(var context: Context) {
             AppDataBase.destroyInstance()
         }).start()
     }
+
+    public fun deleteTeamByTeamId(teamId: Long){
+        Thread(Runnable {
+            AppDataBase.getInstance(context)?.teamDao()?.deleteTeamById(teamId)
+            AppDataBase.destroyInstance()
+        }).start()
+    }
+
 }
