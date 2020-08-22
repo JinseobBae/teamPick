@@ -23,4 +23,6 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="toTeamPick">팀 뽑기</string>
     <string name="toTeamSetting">팀 설정</string>
+
+    <string name="version">V4</string>
 </resources>
