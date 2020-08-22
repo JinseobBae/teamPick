@@ -1,4 +1,4 @@
-package com.example.teampick.custom
+package com.example.teampick.custom.dialog
 
 import com.example.teampick.R
 import android.app.Dialog
@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.widget.*
-import com.example.teampick.database.AppDataBase
 import com.example.teampick.database.DBService
 import com.example.teampick.utils.PickUtils
 import com.example.teampick.vo.Team
