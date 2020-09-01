@@ -51,10 +51,7 @@ class PickResultActivity : AppCompatActivity() {
                     makeTextArea(key, teamValues, teamVo, seq)
                 }
             }
-//            val fb = findViewById<View>(R.id.fab) as FloatingActionButton
-////            val fbListener = fbListener(teamPickResult, userList, roundCnt)
-////            fb.setOnClickListener(fbListener)
-        }
+       }
     }
 
     fun fbListener(teamPickResult: HashMap<String, ArrayList<String>>, userList: ArrayList<String>, roundCnt: Int): View.OnClickListener =
@@ -68,16 +65,10 @@ class PickResultActivity : AppCompatActivity() {
 
 
     fun makeTitle() {
-        val layout = findViewById<View>(R.id.resultArea) as LinearLayout
-        val layoutParams = FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-        val textView = TextView(this@PickResultActivity)
-        val id = View.generateViewId()
-        textView.id = id
-        textView.layoutParams = layoutParams
+        val textView = findViewById<TextView>(R.id.result_title)
         textView.textSize = 70f
         textView.gravity = Gravity.CENTER_HORIZONTAL
-        textView.text = "<추첨 결과>"
-        layout.addView(textView)
+        textView.text = "추첨 결과"
     }
 
     fun makeTextArea(userName: String?, teamList: List<String>, teamVo: TeamVo, rating: Double) {
